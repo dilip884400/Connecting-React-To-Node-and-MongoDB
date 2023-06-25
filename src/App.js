@@ -7,11 +7,15 @@ function App() {
           setForm({...form,[e.target.name]:e.target.value})
   }
 
-  function handleSubmit(e){
+  const  handleSubmit = async (e)=>{
     e.preventDefault()
-    console.log(form)
+    const responce = await fetch("http://localhost:8080/demo",{
+      method:'GET'
+    })
+    const data = await responce.text()
+    console.log(data)
   }
-   
+
   return (
     <div className="App">
     <p>{JSON.stringify(form)}</p>
