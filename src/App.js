@@ -10,7 +10,11 @@ function App() {
   const  handleSubmit = async (e)=>{
     e.preventDefault()
     const responce = await fetch("http://localhost:8080/demo",{
-      method:'GET'
+      method:'POST',
+      body:JSON.stringify(form),
+      headers:{
+        'Content-Type':'application/json'
+      }
     })
     const data = await responce.text()
     console.log(data)
